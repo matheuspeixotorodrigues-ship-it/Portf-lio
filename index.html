@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matheus | Web Designer</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/canela" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="lang-container">
+        <div class="lang-current" onclick="toggleLangMenu()">
+            <i class="fas fa-globe" id="langIcon"></i> 
+            <span>PT</span>
+        </div>
+        <ul class="lang-dropdown" id="langDropdown">
+            <li><a href="#">EN</a></li>
+            <li><a href="#">ES</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo">Matt<span class="logo-dot">.</span></a>
+        
+        <nav class="desktop-nav">
+            <a href="web-design.html">Serviços</a>
+            <a href="index.html#processo">Processo</a> 
+            <a href="sobre.html">Sobre</a>
+        </nav>
+
+        <div class="header-right">
+            <a href="#contato" class="btn-talk">Contato</a>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-dropdown" id="mobileMenu">
+        <nav class="mobile-nav-links">
+            <a href="web-design.html" onclick="toggleMenu()">Serviços</a>
+            <a href="sobre.html" onclick="toggleMenu()">Sobre</a>
+            <a href="index.html#processo" onclick="toggleMenu()">Processo</a>
+            
+            <div class="lang-mobile-container">
+                <div class="lang-mobile-btn" onclick="toggleMobileLang()">
+                    <i class="fas fa-globe" id="mobileLangIcon"></i> 
+                    <span>Idioma (PT)</span>
+                    <i class="fas fa-chevron-down arrow-indicator"></i>
+                </div>
+                <div class="lang-mobile-list" id="mobileLangList">
+                    <a href="#">English (EN)</a>
+                    <a href="#">Español (ES)</a>
+                </div>
+            </div>
+        </nav>
+        <a href="#contato" class="btn-talk-mobile" onclick="toggleMenu()">Contato</a>
+    </div>
+
+    <main id="swup" class="transition-fade">
+        <section id="home" class="hero fade-in">
+            <div class="hero-image">
+                <img src="img/perfil.jpg.png" alt="Matheus">
+            </div>
+
+            <div class="hero-content parallax-text">
+                <h1>Web Designer <br> <span class="lighter">& Developer</span></h1>
+                <p>Serviços premium de web design e web development para destacar o seu negócio.</p>
+                
+                <a href="#services" class="hero-scroll-btn">
+                    <div class="arik-circle">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <span>Meus Serviços</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="services" class="services fade-in">
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div>
+                        <span class="service-number">01</span>
+                        <h3>WEB DESIGN</h3>
+                        <p>Designs web visualmente impressionantes que cativam seu público, combinando a voz da sua marca com as necessidades do cliente.</p>
+                    </div>
+                    <a href="web-design.html#area-web-design" class="service-link">
+                        <div class="arrow-circle"><i class="fas fa-arrow-up-right-from-square"></i></div>
+                        <span>Sobre Web Design</span>
+                    </a>
+                </div>
+
+                <div class="service-card reveal">
+                    <div>
+                        <span class="service-number">02</span>
+                        <h3>WEB DEVELOPMENT</h3>
+                        <p>Obtenha soluções de desenvolvimento web personalizadas, adaptadas às suas especificações e projetadas para oferecer uma experiência de usuário impecável.</p>
+                    </div>
+                    <a href="web-design.html#area-web-development" class="service-link">
+                        <div class="arrow-circle"><i class="fas fa-arrow-up-right-from-square"></i></div>
+                        <span>Sobre o Web development</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="processo" class="process-section">
+            <div class="process-header" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <span class="contact-subtitle reveal fade-down">O PROCESSO</span>
+                <h2 class="reveal">
+                    <span style="display: block;">Seu site em</span>
+                    <span style="color: #efc9a2; display: block;">5 passos</span>
+                </h2>
+                <p class="reveal" style="text-align: center; color: #fbede0; margin-bottom: 120px; max-width: 500px;">
+                    Para atender às necessidades do seu negócio.
+                </p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-start-icon reveal fade-down">↓</div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-number">01</div>
+                    <div class="timeline-box">
+                        <span class="box-overline">VAMOS CONVERSAR?</span>
+                        <h3>Descoberta e Objetivos</h3>
+                        <p>Antes de qualquer linha de código, precisamos bater um papo. Quero entender a fundo a sua ideia, quem são seus clientes e quais problemas o novo site precisa resolver.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal delay-200">
+                    <div class="timeline-number">02</div>
+                    <div class="timeline-box">
+                        <span class="box-overline">A FUNDAÇÃO</span>
+                        <h3>Estrutura e Estratégia</h3>
+                        <p>Com base na nossa conversa, começo a desenhar o esqueleto do site. É aqui que decidimos onde cada informação vai ficar, garantindo que o seu cliente tenha a melhor experiência ao navegar.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal delay-200">
+                    <div class="timeline-number">03</div>
+                    <div class="timeline-box">
+                        <span class="box-overline">A MÁGICA VISUAL</span>
+                        <h3>Design Exclusivo</h3>
+                        <p>É aqui que o seu projeto ganha vida! Crio um visual moderno, sofisticado e totalmente alinhado com as cores e a identidade da sua marca, feito para destacar você da concorrência.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal delay-200">
+                    <div class="timeline-number">04</div>
+                    <div class="timeline-box">
+                        <span class="box-overline">MÃO NA MASSA</span>
+                        <h3>Desenvolvimento</h3>
+                        <p>Pego todo o design aprovado e transformo em código de verdade. Construo um site rápido, seguro e com animações suaves que dão aquele toque de profissionalismo e qualidade.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal delay-200">
+                    <div class="timeline-number">05</div>
+                    <div class="timeline-box">
+                        <span class="box-overline">PRONTO PARA BRILHAR</span>
+                        <h3>Lançamento e Suporte</h3>
+                        <p>Colocamos o site no ar! Faço a entrega oficial do projeto e te explico tudo. E não se preocupe: você terá meu suporte direto para tirar qualquer dúvida sobre como utilizar a sua nova ferramenta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resumo-sobre" class="about-preview">
+            <div class="about-content">
+                
+                <div class="about-hero-section">
+                    <span class="bg-nome-esq" id="nomeEsquerda">Matheus</span>
+                    <span class="bg-nome-dir" id="nomeDireita">Peixoto</span>
+                    
+                    <div class="about-image reveal" style="max-width: 450px; width: 100%; margin: 0 auto; position: relative; z-index: 2; flex-shrink: 0;">
+                        <img src="img/foto.jpg.jpeg" alt="Matheus Peixoto" style="width: 100%; max-width: 450px; border-radius: 0; filter: grayscale(100%) contrast(1.1); -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%); mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);">
+                    </div>
+                </div>
+                
+                <div class="about-grid reveal delay-200">
+                    <div class="about-left">
+                        <h2>Um site que deixa uma <span style="color: #efc9a2;">impressão duradoura!</span></h2>
+                    </div>
+                    <div class="about-right">
+                        <p>Olá, sou o Matheus – um web designer apaixonado por criar soluções únicas e exclusivas. Meu foco é dar um toque pessoal e profissional a cada projeto, transformando a sua visão em uma experiência digital de alto nível.</p>
+                        <div class="about-socials">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="marquee-section">
+            <div class="marquee-track">
+                <span>VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
+                <span>VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
+            </div>
+        </div>
+
+        <section id="contato" class="contact">
+            <span class="contact-subtitle reveal">Algum projeto em mente?</span>
+            <h2>
+                <span class="reveal delay-200" style="display: block;">Vamos fazer seu</span>
+                <span class="reveal delay-400" style="display: block;">Site Brilhar</span>
+            </h2>
+            
+            <div class="footer-content reveal delay-400">
+                
+                <div class="footer-col-left">
+                    <a href="index.html" class="footer-logo">Matt<span class="logo-dot">.</span></a> 
+                    
+                    <div class="footer-socials">
+                        <a href="#" target="_blank">
+                            <div class="social-circle"><i class="fab fa-instagram"></i></div> 
+                            <span>Instagram</span>
+                        </a>
+                        <a href="#" target="_blank">
+                            <div class="social-circle"><i class="fab fa-linkedin"></i></div> 
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://wa.me/SEUNUMERO" target="_blank">
+                            <div class="social-circle"><i class="fab fa-whatsapp"></i></div> 
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col-right">
+                    <span class="footer-title">Páginas</span>
+                    <nav class="footer-nav">
+                        <a href="index.html" class="active-page">Home</a>
+                        <a href="web-design.html">Serviços</a>
+                        <a href="sobre.html">Sobre</a>
+                    </nav>
+                </div>
+
+            </div>
+            
+            <p class="footer-note">© 2026 Matheus Peixoto. Todos os direitos reservados.</p>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/scroll-plugin@3"></script>
+    <script src="script.js"></script>
+</body>
+</html

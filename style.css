@@ -1,0 +1,1415 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@100;200;300;400;500&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+html { overscroll-behavior-y: none; }
+:root { --bg-color: #000000; --text-color: #E6DACE; --muted-color: #888; --glass-bg: rgba(20, 20, 20, 0.95); --border-color: rgba(255, 255, 255, 0.08); }
+body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; line-height: 1.6; }
+
+/* SELETOR DE IDIOMA */
+.lang-container { position: fixed; top: 25px; right: 40px; z-index: 1100; display: flex; flex-direction: column; align-items: flex-end; opacity: 0; animation: langEntry 1.5s ease-out forwards; }
+.lang-current { display: flex; align-items: center; gap: 8px; background-color: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color); padding: 10px 15px; font-size: 0.75rem; font-weight: 500; color: var(--muted-color); text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; cursor: pointer; }
+.lang-current:hover { color: var(--text-color); border-color: var(--text-color); }
+#langIcon { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+#langIcon.rotated { transform: rotate(180deg); color: var(--text-color); }
+.lang-dropdown { position: absolute; top: 100%; right: 0; margin-top: 5px; list-style: none; background-color: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color); width: 100%; text-align: center; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; }
+.lang-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+.lang-dropdown li { border-bottom: 1px solid rgba(255,255,255,0.05); }
+.lang-dropdown li:last-child { border-bottom: none; }
+.lang-dropdown a { display: block; padding: 10px 0; font-size: 0.75rem; color: var(--muted-color); text-decoration: none; transition: 0.2s; }
+.lang-dropdown a:hover { background-color: rgba(255,255,255,0.05); color: var(--text-color); }
+@keyframes langEntry { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* HEADER */
+header { position: fixed; top: 25px; left: 50%; transform: translateX(-50%); width: max-content; padding: 10px 15px; display: flex; align-items: center; gap: 30px; background-color: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 0; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: headerEntry 1.5s ease-out forwards; opacity: 0; }
+@keyframes headerEntry { from { opacity: 0; transform: translate(-50%, -20px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+header .logo { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 100; color: var(--text-color); text-decoration: none; letter-spacing: 2px; text-transform: lowercase; transition: opacity 0.3s; }
+header .logo:hover { opacity: 0.8; }
+
+.desktop-nav { display: flex; gap: 20px; }
+.desktop-nav a { position: relative; text-decoration: none; color: var(--muted-color); font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; padding-bottom: 2px; }
+.desktop-nav a::after { content: ''; position: absolute; width: 100%; height: 1px; bottom: 0; left: 0; background-color: var(--text-color); transform: scaleX(0); transform-origin: bottom right; transition: transform 0.3s ease-out; }
+.desktop-nav a:hover { color: var(--text-color); }
+.desktop-nav a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+
+.header-right { display: flex; align-items: center; gap: 15px; }
+.btn-talk { background-color: var(--text-color); color: #000; text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; padding: 9px 18px; border-radius: 2px; transition: 0.3s; white-space: nowrap; }
+.btn-talk:hover { background-color: #fff; }
+
+.mobile-menu-btn { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; cursor: pointer; z-index: 2100; }
+.mobile-menu-btn span { display: block; width: 100%; height: 2px; background-color: var(--text-color); border-radius: 2px; transition: all 0.3s ease-in-out; }
+.mobile-menu-btn.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-btn.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.mobile-dropdown { position: fixed; top: 75px; left: 50%; transform: translateX(-50%) translateY(-20px); width: 90%; max-width: 400px; background-color: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--border-color); border-radius: 0; padding: 25px 20px; gap: 15px; display: flex; flex-direction: column; align-items: center; z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease-in-out; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+.mobile-dropdown.active { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.mobile-nav-links { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
+.mobile-nav-links a { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--muted-color); text-decoration: none; text-transform: uppercase; font-weight: 500; letter-spacing: 1px; transition: 0.3s; padding: 2px 0; }
+.mobile-nav-links a:hover { color: var(--text-color); }
+.lang-mobile-container { width: 100%; display: flex; flex-direction: column; align-items: center; border-top: 1px solid var(--border-color); margin-top: 10px; padding-top: 15px; }
+.lang-mobile-btn { display: flex; align-items: center; gap: 8px; color: var(--muted-color); font-size: 0.8rem; text-transform: uppercase; cursor: pointer; padding: 5px; transition: 0.3s; }
+.lang-mobile-btn:hover { color: var(--text-color); }
+#mobileLangIcon { transition: transform 0.4s ease; }
+#mobileLangIcon.rotated { transform: rotate(180deg); color: var(--text-color); }
+.arrow-indicator { font-size: 0.7rem; margin-left: 5px; transition: transform 0.3s ease; }
+.arrow-indicator.rotated { transform: rotate(180deg); }
+.lang-mobile-list { display: none; flex-direction: column; align-items: center; gap: 10px; margin-top: 10px; width: 100%; animation: fadeIn 0.4s ease; }
+.lang-mobile-list.active { display: flex; }
+.lang-mobile-list a { font-size: 0.75rem; color: var(--muted-color); border-bottom: 1px solid rgba(255,255,255,0.05); width: 100%; text-align: center; padding-bottom: 5px; }
+.lang-mobile-list a:last-child { border-bottom: none; }
+.lang-mobile-list a:hover { color: var(--text-color); }
+.btn-talk-mobile { background-color: var(--text-color); color: #000; padding: 10px 0; width: 100%; text-align: center; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 2px; font-size: 0.8rem; }
+
+/* HERO */
+.hero { 
+    position: relative; 
+    padding: 70px 20px 30px; 
+    text-align: center; 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    overflow: hidden; 
+}
+.hero-content { position: relative; z-index: 2; will-change: transform; }
+.hero-image { width: 100%; margin-top: -130px; margin-bottom: -110px; position: relative; z-index: 1; pointer-events: none; }
+.hero-image img { width: 100%; max-width: 650px; height: auto; -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%); mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%); mix-blend-mode: screen; opacity: 0.9; transition: 0.5s; }
+h1 { font-family: 'Canela', 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: 8.5rem; line-height: 1; margin-bottom: 25px; color:#fba849 var(--text-color); letter-spacing: 5px; text-shadow: 0 10px 40px rgba(0,0,0,0.9); text-transform: capitalize; }
+.lighter { font-weight: 300; font-size: 0.85em; opacity: 0.5; font-style: italic;color: #efc9a2 }
+.hero p { font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--muted-color); max-width: 500px; margin: 0 auto 0; font-weight: 400; }
+
+/* BOTÃO HERO */
+.hero-scroll-btn {
+    display: inline-flex; align-items: center; gap: 20px;
+    text-decoration: none; margin-top: 40px; cursor: pointer; transition: opacity 0.3s;
+}
+.hero-scroll-btn:hover { opacity: 0.8; }
+.arik-circle {
+    width: 50px; height: 50px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-color); font-size: 0.9rem; font-weight: 300; transition: all 0.3s ease;
+}
+.hero-scroll-btn span {
+    font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--text-color);
+}
+.hero-scroll-btn:hover .arik-circle { border-color: var(--text-color); background-color: var(--text-color); color: #000; }
+
+/* SERVIÇOS */
+.services { padding: 20px 5% 100px; }
+.services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.service-card { background-color: #0a0a0a; border: 1px solid #1a1a1a; padding: 60px 40px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease !important; position: relative; min-height: 400px; }
+.service-card:hover { border-color: var(--text-color); transform: translateY(-5px)!important; }
+.service-number { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--muted-color); margin-bottom: 20px; display: block; letter-spacing: 1px; }
+.service-card h3 { 
+    font-family: 'Canela', 'Playfair Display', serif; 
+    font-weight: 300; 
+    font-size: 2.5rem; 
+    color: var(--text-color); 
+    margin-bottom: 25px; 
+    line-height: 1.2; 
+    
+    /* --- ADICIONE ESTA LINHA --- */
+    letter-spacing: 4px; 
+}
+.service-card p { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--muted-color); line-height: 1.6; max-width: 90%; margin-bottom: 40px; }
+.service-link { display: flex; align-items: center; gap: 15px; text-decoration: none; margin-top: auto; }
+.arrow-circle { width: 45px; height: 45px; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-color); font-size: 0.9rem; transition: 0.4s; }
+.service-link span { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-color); transition: 0.3s; }
+.service-card:hover .arrow-circle { background-color: var(--text-color); color: #000; border-color: var(--text-color); transform: rotate(45deg); }
+
+/* PROJETOS */
+.projects { padding: 100px 5%; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header h2 { font-family: 'Canela', 'Playfair Display', serif; font-style: italic; font-weight: 300; font-size: 3rem; color: var(--text-color); }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+.project-card { background: transparent; border: 1px solid #1a1a1a; transition: 0.4s; cursor: pointer; }
+.project-card:hover { border-color: var(--text-color); transform: translateY(-5px); }
+.card-image { height: 280px; background: #0f0f0f; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #333; transition: 0.4s; }
+.project-card:hover .card-image { color: var(--text-color); }
+.card-content { padding: 25px; }
+.card-content span { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: var(--muted-color); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; }
+.card-content h3 { font-family: 'Canela', 'Playfair Display', serif; font-style: italic; font-size: 1.6rem; font-weight: 400; }
+
+/* CONTATO */
+.contact { text-align: center; padding: 120px 20px 60px; border-top: 1px solid #111;padding-bottom: 40px; background-color: #0a0a0a }
+.contact h2 { font-family: 'Canela', 'Playfair Display', serif; font-style: italic; font-weight: 300; font-size: 4.5rem; line-height: 1.2; margin-bottom: 50px; }
+
+/* === AJUSTE FINO: LADO A LADO PERFEITO NO PC E MOBILE === */
+.social-links { 
+    display: flex; 
+    flex-direction: column; /* Empilha um embaixo do outro */
+    align-items: flex-start; /* Alinha os ícones perfeitamente à esquerda */
+    width: max-content; /* A caixa invisível fica só do tamanho do maior texto */
+    margin: 0 auto 80px auto; /* Centraliza a caixa na tela */
+    gap: 15px; /* Espaço entre os links */
+}
+/* ======================================================== */
+
+.social-links a { display: flex; align-items: center; gap: 10px; position: relative; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted-color); text-decoration: none; padding-bottom: 5px; transition: color 0.3s; margin-bottom: 10px !important; }
+.social-links a:last-child {
+    margin-bottom: 0 !important;
+}
+/* A bolinha do ícone com fundo certinho */
+.social-links a i { width: 55px; height: 55px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: 0.3s; color: var(--text-color); }
+
+.social-links a::after { content: ''; position: absolute; width: 100%; height: 1px; bottom: 0; left: 0; background-color: var(--text-color); transform: scaleX(0); transform-origin: bottom right; transition: transform 0.3s ease-out; }
+.social-links a:hover { color: var(--text-color); }
+
+/* Fazer a bolinha preencher no hover também */
+.social-links a:hover i { border-color: var(--text-color); background-color: var(--text-color); color: #000; }
+
+.social-links a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+.footer-note { font-size: 0.7rem; color: #333; text-transform: uppercase; letter-spacing: 1px; }
+.site-footer {
+    background-color: #0a0a0a; /* O fundo cinza bem escuro */
+    width: 100%;
+    padding: 40px 0 20px 0; /* Espaço em cima e embaixo */
+    border-top: 1px solid var(--border-color); /* A linha divisória */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza tudo no meio */
+    gap: 30px; /* Espaço entre os botões e a frase de direitos autorais */
+}
+/* Bolinha com a seta no topo da linha */
+.timeline-start-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+    /* A MÁGICA PARA "QUEBRAR" A LINHA */
+    background-color: #000000; 
+    
+    border: 1px solid #333;
+    color: #efc9a2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    position: absolute;
+    top: -60px;
+    left: 25px; /* Segue a nova posição da linha */
+    
+    /* ISSO FORÇA A SETA A FICAR NO CENTRO EXATO */
+    transform: translateX(-50%); 
+    z-index: 3;
+
+}
+@media (max-width: 768px) {
+    .lang-container { display: none; }
+    .desktop-nav { display: none; }
+    .mobile-menu-btn { display: flex; }
+    header { top: 20px; width: 90%; max-width: 100%; justify-content: space-between; padding: 10px 15px; border-radius: 0; }
+    .btn-talk { font-size: 0.65rem; padding: 7px 14px; }
+    .lang-selector { font-size: 0.7rem; }
+    h1 { font-size: 4.2rem; letter-spacing: 0px; margin-bottom: 15px; word-wrap: break-word; }
+    .hero-image { margin-top: 0; margin-bottom: -50px; }
+    .hero-image img { opacity: 0.7; max-width: 90%; height: auto; }
+    .hero p { font-size: 0.9rem; padding: 0 10px; }
+    .contact h2 { font-size: 3rem; }
+    
+    /* Removemos a antiga configuração quebrada do mobile */
+    .social-links { margin-bottom: 60px; }
+    
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 40px 25px; min-height: auto; }
+    .service-card h3 { font-size: 2rem; }
+}
+.fade-in { animation: fadeIn 1.5s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- ANIMAÇÃO DE SCROLL (REVEAL) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px); /* Começa 60px para baixo */
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.service-card:nth-child(2) {
+    transition-delay: 0.2s; /* Atraso no segundo card */
+}
+
+/* --- ANIMAÇÃO DE SCROLL (REVEAL) DUPLICADO DO SEU CÓDIGO --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    
+    /* IMPORTANTE: Adicione isso para que o texto obedeça o "transform" */
+    display: inline-block; 
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Atraso para o segundo card (já existia) */
+.service-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+/* NOVO: Classe de atraso genérica para textos */
+.delay-200 {
+    transition-delay: 0.3s;
+}
+.delay-400 { transition-delay: 0.7s; }
+
+/* Para os novos delays que você adicionou no HTML */
+.delay-300 { transition-delay: 0.5s; }
+.delay-700 { transition-delay: 1.3s; }
+.delay-800 { transition-delay: 1.5s; }
+/* =========================================
+   SEÇÃO DE PROCESSO (A ESCADINHA)
+   ========================================= */
+
+.process-section {
+    padding: 100px 0;
+    width: 100%;
+    overflow: hidden; 
+}
+
+/* Container principal */
+.timeline-container {
+    position: relative;
+    max-width: 1250px; 
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+/* === CELULAR (Padrão) === */
+
+/* A linha vertical cinza no fundo */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    
+    /* O centro exato da bolinha no celular agora é 20px */
+    left: 40px; 
+    
+    /* Isso garante que a linha de 1px fique com o meio cravado nos 20px */
+    transform: translateX(-50%); 
+    
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #333;
+    z-index: 1;
+}
+
+/* Bolinha com a seta no topo da linha */
+.timeline-start-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #000000; 
+    border: 1px solid #333;
+    color: #efc9a2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    position: absolute;
+    top: -60px;
+    
+    /* Alinha com a linha do celular e usa apenas o transform para centralizar */
+    left: 40px; 
+    transform: translateX(-50%); 
+    margin-left: 0; /* Limpamos a margem para evitar conflito */
+    
+    z-index: 3;
+    
+    /* O TRUQUE ANTIFALHAS: Puxamos metade do tamanho (20px) para a esquerda */
+    margin-left: -20px; 
+    z-index: 3;
+}
+
+/* Cada passo do processo */
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: center; /* Mantém número centralizado com a caixa */
+    gap: 30px;
+    z-index: 2;
+    width: 100%;
+}
+
+/* O círculo com o número */
+.timeline-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #000000; /* Fundo preto quebra a linha */
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    color: #efc9a2;
+    flex-shrink: 0;
+    z-index: 3;
+}
+
+/* A caixa escura com os textos */
+.timeline-box {
+    background-color: #0a0a0a;
+    border: 1px solid #222;
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.box-overline {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.timeline-box h3 { margin-bottom: 15px; font-size: 1.5rem; }
+.timeline-box p { color: var(--muted-color); margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem; }
+.timeline-box ul { list-style: none; padding-left: 0; }
+.timeline-box ul li { color: #ccc; font-size: 0.9rem; margin-bottom: 12px; position: relative; padding-left: 20px; }
+.timeline-box ul li::before { content: '•'; color: #efc9a2; position: absolute; left: 0; font-size: 1.2rem; line-height: 1; }
+
+
+/* === COMPUTADOR (A Mágica do Zig-Zag) === */
+@media (min-width: 768px) {
+    
+   /* Centraliza a linha no PC */
+    .timeline-container::before {
+        left: 50%;
+        /* O transform já está lá em cima, não precisa repetir */
+    }
+
+    /* Centraliza a seta do topo na linha do PC */
+    .timeline-start-icon {
+        left: 50%;
+        /* O transform já está lá em cima, não precisa repetir */
+    }
+
+    /* Trava o número BEM NO MEIO da caixa e da linha */
+    .timeline-number {
+        position: absolute;
+        left: 50%;
+        top: 50%; 
+        
+        /* A MÁGICA: O transform calcula o meio sozinho, sem usar margens! */
+        transform: translate(-50%, -50%); 
+        
+        /* Limpamos qualquer margem antiga */
+        margin-left: 0;
+        margin-top: 0;
+    }
+    /* CAIXAS ÍMPARES (1, 3, 5) vão para o lado DIREITO */
+    .timeline-item:nth-child(odd) {
+        justify-content: flex-end;
+    }
+    .timeline-item:nth-child(odd) .timeline-box {
+        width: calc(50% - 60px); /* Afasta as caixas da linha do meio */
+    }
+
+    /* CAIXAS PARES (2, 4) vão para o lado ESQUERDO */
+    .timeline-item:nth-child(even) {
+        justify-content: flex-start;
+    }
+    .timeline-item:nth-child(even) .timeline-box {
+        width: calc(50% - 60px); /* Afasta as caixas da linha do meio */
+    }
+}
+
+
+/* =========================================
+   ESTILOS DO TÍTULO E ANIMAÇÃO EXTRA
+   ========================================= */
+
+/* Inverte o movimento para vir de cima para baixo */
+.reveal.fade-down {
+    transform: translateY(-40px); 
+}
+.reveal.fade-down.active {
+    transform: translateY(0);
+}
+
+/* Estilo do título "Seu site em 5 passos" */
+.process-header h2 {
+    font-family: 'Canela', 'Playfair Display', serif; 
+    font-style: italic; 
+    font-weight: 100; 
+    line-height: 1.1;
+    font-size: 3rem; 
+    margin-bottom: 20px;
+}
+
+/* Tamanho gigante apenas para o computador */
+@media (min-width: 768px) {
+    .process-header h2 {
+        font-size: 5.5rem; 
+    }
+}/* =========================================
+   PÁGINA DE WEB DESIGN (CORRIGIDA)
+   ========================================= */
+
+/* --- 1. CABEÇALHO HERO (FUNDO PRETO) --- */
+.service-detail-hero {
+    padding: 150px 20px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.service-detail-hero h1 {
+    font-size: 7.5rem;
+    margin-bottom: 25px;
+    line-height: 1.1;
+}
+
+.service-detail-hero p {
+    color: var(--muted-color);
+    font-size: 1.15rem;
+    max-width: 550px;
+    margin: 0 auto 40px;
+}
+
+.hero-laptop-image {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 60px;
+}
+
+.hero-laptop-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- 2. ÁREA DOS DETALHES (O QUADRO CINZA) --- */
+.service-detail-section {
+    padding: 50px 20px 50px;
+    max-width: 1200px; /* Largura perfeita para o quadro */
+    margin: 0 auto;
+}
+
+.gray-box {
+    background-color: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-radius: 0px;
+    padding: 80px 60px;
+    text-align: left; /* Mantém os textos alinhados à esquerda como no print */
+}
+
+.service-detail-header {
+    margin-bottom: 60px;
+}
+
+.service-detail-header h2 {
+    font-family: 'Canela', 'Playfair Display', serif;
+    font-size: 3.6rem; /* Tamanho premium e elegante, sem ser monstro! */
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-top: 15px;
+}
+
+.service-detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.detail-block {
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 50px;
+}
+
+.detail-block:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.detail-block p {
+    color: var(--muted-color);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-top: 15px;
+}
+
+/* --- 3. RESPONSIVO (CELULAR) --- */
+@media (max-width: 768px) {
+    .service-detail-hero { padding-top: 120px; }
+    .service-detail-hero h1 { font-size: 3.5rem; }
+    .service-detail-hero p { font-size: 1rem; }
+    
+    .gray-box { padding: 40px 25px; border-radius: 0px; }
+    .service-detail-header h2 { font-size: 2.5rem; }
+    .detail-block p { font-size: 1rem; }
+}/* =========================================
+   RODAPÉ / CONTATO (RESTAURAÇÃO + 2 COLUNAS PREMIUM)
+   ========================================= */
+.contact { 
+    text-align: center; 
+    padding: 120px 20px 60px; 
+    border-top: 1px solid #1a1a1a;
+    padding-bottom: 40px; 
+    background-color: #0a0a0a; 
+}
+
+.contact h2 { 
+    font-family: 'Canela', 'Playfair Display', serif; 
+    font-style: italic; 
+    font-weight: 100; 
+    font-size: 4.5rem; 
+    line-height: 1.2; 
+    margin-bottom: 80px; /* Aumentei para afastar bem o texto das colunas abaixo */
+}
+
+.contact-subtitle {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* O Container das Duas Colunas Novas */
+.footer-content { 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; /* Alinha os topos perfeitamente */
+    gap: 15vw; 
+    max-width: 1200px; 
+    margin: 0 auto 80px auto; 
+    text-align: left; /* Garante que os links não fiquem tortos */
+}
+
+.footer-col-left, .footer-col-right { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 25px; 
+}
+
+/* Truque para alinhar o topo do texto "Páginas" com o meio da sua Logo "matheus." */
+.footer-col-right {
+    padding-top: 12px; 
+}
+
+
+/* Redes Sociais Mais Robustas */
+.footer-socials { display: flex; flex-direction: column; gap: 20px; }
+.footer-socials a { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    color: var(--muted-color); 
+    text-decoration: none; 
+    font-size: 0.9rem; /* Textos maiores */
+    font-weight: 500;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: 0.3s; 
+}
+
+.social-circle { 
+    width: 45px; /* Círculo maior */
+    height: 45px; /* Círculo maior */
+    border: 1px solid var(--border-color); 
+    border-radius: 50%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 1.2rem; /* Ícone maior */
+    transition: 0.3s; 
+}
+
+.footer-socials a:hover { color: var(--text-color); }
+.footer-socials a:hover .social-circle { 
+    border-color: var(--text-color); 
+    color: #000; 
+    background-color: var(--text-color); 
+}
+
+/* Coluna de Páginas Mais Robusta */
+.footer-title { 
+    color: var(--muted-color); 
+    font-size: 1rem; /* Título maior */
+    margin-bottom: 5px; 
+    font-weight: 400; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-nav { display: flex; flex-direction: column; gap: 20px; }
+.footer-nav a { 
+    color: var(--muted-color); 
+    text-decoration: none; 
+    font-size: 0.9rem; /* Links maiores */
+    font-weight: 500;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: 0.3s; 
+}
+.footer-nav a:hover { color: var(--text-color); }
+
+.footer-nav a.active-page { 
+    color: var(--text-color); 
+    font-weight: 600; 
+} 
+
+.footer-note { 
+    font-size: 0.7rem; 
+    color: #555; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    margin-top: 80px; /* Afasta dos botões de cima */
+}
+
+/* Ajustes para Celular (Media Query unificada) */
+@media (max-width: 768px) {
+    .contact { padding-top: 80px; }
+    .contact h2 { font-size: 3rem; }
+    
+    .footer-content { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 60px; 
+        text-align: center; 
+    }
+    .footer-col-left, .footer-col-right { align-items: center; }
+    .footer-col-right { padding-top: 0; } /* Reseta o truque de alinhamento no celular */
+}/* =========================================
+   IMAGENS INTERNAS (DENTRO DOS QUADROS CINZAS)
+   ========================================= */
+.detail-internal-image {
+    width: 100%;
+    margin-bottom: 60px; /* Dá um respiro elegante antes de começar os textos de baixo */
+}
+
+.detail-internal-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Mantive sem bordas arredondadas para combinar com a sua caixa quadrada! */
+}/* =========================================
+   ANIMAÇÃO DE TRANSIÇÃO DE PÁGINAS (SWUP)
+   ========================================= */
+.transition-fade {
+    transition: 0.4s ease-out;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* O estado da página enquanto está mudando */
+html.is-animating .transition-fade {
+    opacity: 0;
+    transform: translateY(20px);
+}/* =========================================
+   AJUSTES FINAIS DE TAMANHO (TÍTULO E IMAGEM GIGANTE)
+   ========================================= */
+
+/* 1. Quebrando a 'jaula' principal que estava limitando tudo em 900px */
+.service-detail-hero {
+    max-width: 100% !important; 
+}
+
+/* 2. Tamanho do Título no PC */
+.service-detail-hero h1 {
+    font-size: 8.5rem !important; /* <-- Mude o tamanho do título aqui (ex: 7.5, 9.0, 10.0) */
+    margin-bottom: 20px;
+}
+
+/* Proteção para o celular: garante que o título e a imagem não estourem a tela pequena */
+@media (max-width: 768px) {
+    .service-detail-hero h1 {
+        font-size: 3.5rem !important;
+    }
+    .hero-laptop-image {
+        margin-top: 20px !important;
+    }
+}
+
+/* 3. A caixa da imagem agora está livre para crescer */
+.hero-laptop-image {
+    width: 100% !important;
+    max-width: 1300px !important; /* <-- CONTROLE O TAMANHO DO NOTEBOOK AQUI (ex: 1200, 1500, 1800) */
+    margin: 40px auto !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* 4. A imagem preenchendo o tamanho exato da caixa */
+.hero-laptop-image img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+}/* =========================================
+   ACELERANDO A ANIMAÇÃO DOS BOTÕES DO RODAPÉ
+   ========================================= */
+.social-links a { transition: color 0.15s !important; }
+.social-links a i { transition: all 0.15s !important; }
+.social-links a::after { transition: transform 0.15s ease-out !important; }
+
+/* =========================================
+   SEÇÃO SOBRE (RESUMO NA HOME)
+   ========================================= */
+.about-preview {
+    position: relative;
+    padding: 30px 20px 250px; 
+    background-color: #000000; 
+    overflow: hidden;
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* =========================================
+   O SANDUÍCHE DE CAMADAS (BLINDAGEM E MÁSCARA)
+   ========================================= */
+.about-hero-section {
+    position: relative;
+    width: 100%;
+}
+
+.camada-fundo {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1 !important; 
+    pointer-events: none; 
+    
+    /* A MÁGICA: Apaga o texto de forma esfumaçada no centro da tela (onde a foto está) */
+    -webkit-mask-image: radial-gradient(ellipse at center, transparent 25%, black 55%);
+    mask-image: radial-gradient(ellipse at center, transparent 25%, black 55%);
+}
+
+.camada-frente {
+    position: relative;
+    z-index: 10 !important; 
+}
+
+/* =========================================
+   EFEITO PREMIUM: NOME SCROLL PARALLAX
+   ========================================= */
+.bg-nome-esq, .bg-nome-dir {
+    position: absolute;
+    top: 45%; 
+    font-family: 'Canela', 'Playfair Display', serif;
+    font-size: 13.5vw; 
+    color: var(--text-color); 
+    font-style: italic;
+    white-space: nowrap;
+    opacity: 0.02; 
+    will-change: transform, opacity; 
+}
+
+/* PC: Lado a lado */
+.bg-nome-esq { right: 50%; margin-right: 12vw; transform: translateY(-50%); }
+.bg-nome-dir { left: 50%; margin-left: 12vw; transform: translateY(-50%); }
+
+/* =========================================
+   A CAIXA DA FOTO E A FOTO BLINDADAS E CENTRALIZADAS
+   ========================================= */
+.about-image {
+    position: relative;
+    width: 100%;
+    max-width: 600px !important; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 80px auto;
+    background: transparent; /* Zero molduras pretas! */
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 600px !important; 
+    height: auto;
+    display: block;
+    margin: 0 auto; 
+    border-radius: 0 !important;
+    filter: grayscale(100%) contrast(1.1); 
+    -webkit-mask-image: radial-gradient(ellipse at center, black 5%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, black 5%, transparent 75%);
+}
+
+/* =========================================
+   GRID DO SOBRE E TEXTOS
+   ========================================= */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+    align-items: center;
+}
+
+.about-left h2 {
+    font-family: 'Canela', 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.about-right p {
+    color: var(--muted-color);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+/* Os botões sociais circulares em linha horizontal */
+.about-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.about-socials a {
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted-color);
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 1.1rem;
+}
+
+.about-socials a:hover {
+    color: #000;
+    background-color: var(--text-color);
+    border-color: var(--text-color);
+}
+
+/* =========================================
+   RESPONSIVO GERAL (CELULAR)
+   ========================================= */
+@media (max-width: 768px) {
+    .about-preview {
+        padding-bottom: 100px; 
+    }
+
+    /* Desliga a máscara de invisibilidade no celular para o nome não sumir embaixo */
+    .camada-fundo {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .about-grid { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+        margin-top: 180px; 
+    }
+    
+    .about-left h2 { font-size: 2.5rem; }
+    
+    .about-image { margin-bottom: 20px; }
+    .about-image img { max-width: 280px !important; }
+
+    .bg-nome-esq, .bg-nome-dir { 
+        font-size: 19vw; 
+    }
+    
+    .bg-nome-esq { 
+        top: 360px; 
+        right: 50%; 
+        margin-right: -22vw; 
+    }
+    
+    .bg-nome-dir { 
+        top: 430px; 
+        left: 50%; 
+        margin-left: -11vw; 
+    }
+}
+
+/* =========================================
+   FAIXA DESLIZANTE (LET'S TALK)
+   ========================================= */
+.marquee-section {
+    background-color: #111;
+    border-top: 1px solid #1a1a1a;
+    padding: 20px 0;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+}
+
+.marquee-track {
+    display: flex;
+    width: fit-content;
+    animation: scrollMarquee 12s linear infinite;
+}
+
+.marquee-track span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--muted-color);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding-right: 20px;
+    white-space: nowrap;
+}
+
+@keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}/* =========================================
+   SEÇÃO SOBRE - EXCLUSIVO PARA O PC (DESKTOP)
+   ========================================= */
+@media (min-width: 769px) {
+    .about-hero-section {
+        padding-bottom: 120px !important; 
+    }
+
+    .about-preview {
+        padding-bottom: 120px !important; 
+    }
+
+    .bg-nome-esq {
+        top: 750px !important; 
+        right: 50%;
+        margin-right: -2vw !important; 
+    }
+
+    .bg-nome-dir {
+        top: 850px !important; 
+        left: 50%;
+        margin-left: 5vw !important; 
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr 1fr !important; 
+        gap: 160px !important; 
+    }
+
+    .about-left {
+        align-self: flex-start !important; 
+        transform: translateY(5px) !important; 
+    }
+
+    .about-left h2 {
+        font-size: 2.5rem !important;
+    }
+
+    .about-right {
+        transform: translateX(40px) !important; 
+    }
+} /* <--- ESSA É A CHAVE QUE FALTAVA PARA FECHAR O PC! */
+
+
+/* =========================================
+   SEÇÃO SOBRE - EXCLUSIVO PARA CELULAR (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. Corta a folga de espaço entre os nomes e o texto de baixo */
+    .about-hero-section {
+        padding-bottom: 15px !important; 
+    }
+
+    /* 2. Centraliza tudo (textos e botões) */
+    .about-left, 
+    .about-right {
+        text-align: center !important;
+        align-items: center !important; 
+        display: flex;
+        flex-direction: column;
+        padding-left: 0 !important; 
+    }
+
+    /* 3. Ajusta o espaço entre o título e o parágrafo */
+    .about-grid {
+        gap: 30px !important; margin-top: 80px !important; 
+    }
+} /* <--- A CHAVE SALVADORA! ELA FECHA O MOBILE AQUI! */
+
+/* =========================================
+   AJUSTE DE ANCORAGEM (COMPENSA O CABEÇALHO EM TODAS AS TELAS)
+   ========================================= */
+#processo, 
+#area-web-design, 
+#area-web-development {
+    scroll-margin-top: 100px; 
+}
+/* =========================================
+   SOLUÇÃO DEFINITIVA: TRAVA DE LAYOUT (FIM DOS PULOS)
+   ========================================= */
+
+/* 2. Trava do Computador (Serviços) */
+.hero-laptop-image img {
+    aspect-ratio: 16 / 9; /* Formato padrão de tela de notebook/PC */
+    width: 100%;
+    height: auto;
+    object-fit: contain; 
+}
+
+/* 3. Trava do Celular e Tablet (Serviços) */
+.detail-internal-image img {
+    aspect-ratio: 4 / 3; /* Formato padrão retangular */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+/* =========================================
+   RODAPÉ / CONTATO (RESTAURAÇÃO + 2 COLUNAS PREMIUM)
+   ========================================= */
+.contact { 
+    text-align: center; 
+    padding: 120px 20px 60px; 
+    border-top: 1px solid #1a1a1a;
+    padding-bottom: 40px; 
+    background-color: #0a0a0a; 
+}
+
+.contact h2 { 
+    font-family: 'Canela', 'Playfair Display', serif; 
+    font-style: italic; 
+    font-weight: 100; 
+    font-size: 4.5rem; 
+    line-height: 1.2; 
+    margin-bottom: 80px; /* Aumentei para afastar bem o texto das colunas abaixo */
+}
+
+.contact-subtitle {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* O Container das Duas Colunas Novas */
+.footer-content { 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; /* Alinha os topos perfeitamente */
+    gap: 15vw; 
+    max-width: 1200px; 
+    margin: 0 auto 80px auto; 
+    text-align: left; /* Garante que os links não fiquem tortos */
+}
+
+.footer-col-left, .footer-col-right { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 25px; 
+}
+
+/* Truque para alinhar o topo do texto "Páginas" com o meio da sua Logo "matheus." */
+.footer-col-right {
+    padding-top: 12px; 
+}
+
+/* Aumentando a Logo */
+.footer-logo { 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 2rem; /* Logo maior */
+    font-weight: 100; 
+    color: var(--text-color); 
+    text-decoration: none; 
+    letter-spacing: 2px; 
+    text-transform: lowercase; 
+    line-height: 1;
+}
+
+/* Redes Sociais Mais Robustas */
+.footer-socials { display: flex; flex-direction: column; gap: 20px; }
+.footer-socials a { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    color: var(--muted-color); 
+    text-decoration: none; 
+    font-size: 0.9rem; /* Textos maiores */
+    font-weight: 500;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: 0.3s; 
+}
+
+.social-circle { 
+    width: 45px; /* Círculo maior */
+    height: 45px; /* Círculo maior */
+    border: 1px solid var(--border-color); 
+    border-radius: 50%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 1.2rem; /* Ícone maior */
+    transition: 0.3s; 
+}
+
+.footer-socials a:hover { color: var(--text-color); }
+.footer-socials a:hover .social-circle { 
+    border-color: var(--text-color); 
+    color: #000; 
+    background-color: var(--text-color); 
+}
+
+/* Coluna de Páginas Mais Robusta */
+.footer-title { 
+    color: var(--muted-color); 
+    font-size: 1rem; /* Título maior */
+    margin-bottom: 5px; 
+    font-weight: 400; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-nav { display: flex; flex-direction: column; gap: 20px; }
+.footer-nav a { 
+    color: var(--muted-color); 
+    text-decoration: none; 
+    font-size: 0.9rem; /* Links maiores */
+    font-weight: 500;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: 0.3s; 
+}
+.footer-nav a:hover { color: var(--text-color); }
+
+.footer-nav a.active-page { 
+    color: var(--text-color); 
+    font-weight: 600; 
+} 
+
+.footer-note { 
+    font-size: 0.7rem; 
+    color: #555; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    margin-top: 80px; /* Afasta dos botões de cima */
+}
+
+/* Ajustes para Celular (Media Query unificada) */
+@media (max-width: 768px) {
+    .contact { padding-top: 80px; }
+    .contact h2 { font-size: 3rem; }
+    
+    .footer-content { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 60px; 
+        text-align: center; 
+    }
+    .footer-col-left, .footer-col-right { align-items: center; }
+    .footer-col-right { padding-top: 0; } /* Reseta o truque de alinhamento no celular */
+}
+/* =========================================
+   LIBERAR LETRA MAIÚSCULA DA LOGO
+   ========================================= */
+.logo, .footer-logo {
+    text-transform: none !important; 
+}
+/* =========================================
+   CALIBRANDO O TELETRANSPORTE DO PROCESSO
+   ========================================= */
+#processo {
+    scroll-margin-top: 0px !important; /* Zera o freio, pois a seção já tem espaço de sobra */
+}
+
+/* =========================================
+   PÁGINA SOBRE: LAYOUT SPLIT (ESTILO ARIK)
+   ========================================= */
+.about-split-container {
+    display: flex;
+    width: 100%;
+    position: relative;
+    background-color: #000;
+}
+
+/* A FOTO DA ESQUERDA QUE FICA CONGELADA (AGORA 40%) */
+.about-left-sticky {
+    width: 40%; 
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #050505;
+    /* Sem padding para a imagem colar nas bordas perfeitamente */
+}
+
+.about-left-sticky::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: linear-gradient(to right, transparent 50%, #000 100%);
+    pointer-events: none;
+}
+
+.about-left-sticky img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; /* Mantém o foco no rosto para não cortar a cabeça */
+    filter: grayscale(100%) contrast(1.1);
+    opacity: 0.7;
+    /* Sem border-radius para preencher os cantos da tela */
+}
+
+/* A DIREITA QUE DESLIZA POR CIMA (AGORA 60%) */
+.about-right-scroll {
+    width: 60%; 
+    display: flex;
+    flex-direction: column;
+}
+
+.about-hero-right {
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10% 0 5%;
+}
+
+.about-hero-right h1 {
+    font-size: 6.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.about-hero-right p {
+    font-size: 1.1rem;
+    color: var(--muted-color);
+    max-width: 450px;
+}
+
+/* Reduzindo a folga entre a tela inicial (botão) e a caixa de conteúdo */
+.about-content-right {
+    padding: 0 5% 100px 5%;
+    margin-top: -80px !important; /* Puxa a caixa cinza mais para cima */
+}
+
+/* OS BOTÕES DE REDE SOCIAL (3 COLUNAS IDÊNTICAS) */
+.about-social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px;
+    margin-top: 25px; 
+}
+
+.social-box-link {
+    border: 1px solid #1a1a1a;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: var(--muted-color);
+    transition: 0.3s;
+    background: transparent;
+}
+
+.social-box-link div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.social-box-link i { font-size: 1.1rem; }
+.social-box-link .arrow-icon { color: #333; transition: 0.3s; }
+
+/* EFEITOS DE HOVER (COR DA CAIXA E SETA NA DIAGONAL) */
+.social-box-link:hover {
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+
+.social-box-link:hover .arrow-icon { 
+    color: var(--text-color); 
+    transform: rotate(-45deg); 
+}
+
+/* CELULAR */
+@media (max-width: 768px) {
+    .about-split-container { flex-direction: column; }
+    .about-left-sticky { width: 100%; height: auto; position: relative; } /* Sem padding no celular também */
+    .about-left-sticky::after { background: linear-gradient(to bottom, transparent 50%, #000 100%); }
+    .about-right-scroll { width: 100%; }
+    .about-hero-right { height: auto; padding: 40px 20px 60px; text-align: center; align-items: center; }
+    .about-hero-right h1 { font-size: 4rem; }
+    .about-content-right { padding: 0 20px 80px; margin-top: 0 !important; } /* Zera a margem negativa no mobile para não encavalar */
+    .about-social-grid { grid-template-columns: 1fr; } 
+}
+
+/* =========================================
+   TRAVA DE LARGURA E ALINHAMENTO DO BOTÃO "SOBRE MIM"
+   ========================================= */
+.about-hero-right .hero-scroll-btn {
+    display: flex !important;
+    flex-direction: row !important; 
+    align-items: center !important;
+    width: max-content !important; 
+    gap: 20px !important; 
+}
+
+.about-hero-right .hero-scroll-btn span {
+    white-space: nowrap !important;
+}
+
+/* =========================================
+   FOTO DA DIREITA (CORPO INTEIRO) E CAIXA CINZA
+   ========================================= */
+
+/* 1. Libera a caixa principal para esticar e ajusta as bordas (padding) */
+.about-content-right .gray-box {
+    height: auto !important;
+    max-height: none !important;
+    min-height: max-content !important;
+    padding-top: 40px !important;    /* Borda superior */
+    padding-bottom: 10px !important; /* Borda inferior reduzida */
+}
+
+/* 2. Protege a área da foto contra esmagamento e alinha com o texto */
+.about-content-right .gray-box .detail-internal-image {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 0 !important; 
+    margin-top: 40px !important;
+    flex: none !important; 
+    aspect-ratio: auto !important; 
+}
+
+/* 3. A foto no formato real, sem cantos redondos e sem distorcer */
+.about-content-right .gray-box .detail-internal-image img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important; 
+    max-height: none !important;
+    border-radius: 0 !important; /* Cantos retos */
+    object-fit: initial !important; 
+    aspect-ratio: auto !important; 
+    flex-shrink: 0 !important; 
+}
