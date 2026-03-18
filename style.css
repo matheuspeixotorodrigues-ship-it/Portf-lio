@@ -76,7 +76,7 @@ header .logo:hover { opacity: 0.8; }
 .hero-image { width: 100%; margin-top: -130px; margin-bottom: -110px; position: relative; z-index: 1; pointer-events: none; }
 .hero-image img { width: 100%; max-width: 650px; height: auto; -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%); mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%); mix-blend-mode: screen; opacity: 0.9; transition: 0.5s; }
 h1 { font-family: 'Canela', 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: 8.5rem; line-height: 1; margin-bottom: 25px; color:#fba849 var(--text-color); letter-spacing: 5px; text-shadow: 0 10px 40px rgba(0,0,0,0.9); text-transform: capitalize; }
-.lighter { font-weight: 300; font-size: 0.85em; opacity: 0.5; font-style: italic;color: #efc9a2 }
+.lighter { font-weight: 300; font-size: 0.85em; opacity: 0.5; font-style: italic;color: #ffd6ac }
 .hero p { font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--muted-color); max-width: 500px; margin: 0 auto 0; font-weight: 400; }
 
 /* BOTÃO HERO */
@@ -1288,7 +1288,7 @@ html.is-animating .transition-fade {
 
 .about-hero-right h1 {
     font-size: 6.5rem;
-    line-height: 1.1;
+    line-height: 0.8 !important; /* Forçando o espaçamento menor no PC */
     margin-bottom: 20px;
     letter-spacing: 2px;
 }
@@ -1303,6 +1303,13 @@ html.is-animating .transition-fade {
 .about-content-right {
     padding: 0 5% 100px 5%;
     margin-top: -80px !important; /* Puxa a caixa cinza mais para cima */
+}
+
+/* =========================================
+   AJUSTE DO TÍTULO H2 (O SEU PARCEIRO...)
+   ========================================= */
+.gray-box h2 {
+    line-height: 1.1 !important; /* Ajuste para o PC */
 }
 
 /* OS BOTÕES DE REDE SOCIAL (3 COLUNAS IDÊNTICAS) */
@@ -1356,10 +1363,18 @@ html.is-animating .transition-fade {
     .about-left-sticky { width: 100%; height: auto; position: relative; } /* Sem padding no celular também */
     .about-left-sticky::after { background: linear-gradient(to bottom, transparent 50%, #000 100%); }
     .about-right-scroll { width: 100%; }
-    .about-hero-right { height: auto; padding: 40px 20px 60px; text-align: center; align-items: center; }
-    .about-hero-right h1 { font-size: 4rem; }
+    .about-hero-right { height: auto; padding: 15px 20px 60px; text-align: center; align-items: center; }
+    .about-hero-right h1 { 
+        font-size: 4rem; 
+        line-height: 0.85 !important; 
+    }
     .about-content-right { padding: 0 20px 80px; margin-top: 0 !important; } /* Zera a margem negativa no mobile para não encavalar */
     .about-social-grid { grid-template-columns: 1fr; } 
+    
+    /* Ajuste do h2 no mobile */
+    .gray-box h2 {
+        line-height: 1.1 !important; /* Deixa as linhas coladas no celular */
+    }
 }
 
 /* =========================================
