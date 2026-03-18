@@ -17,25 +17,23 @@
     <div class="lang-container">
         <div class="lang-current" onclick="toggleLangMenu()">
             <i class="fas fa-globe" id="langIcon"></i> 
-            <span>PT</span>
+            <span id="currentLangDesktop">PT</span>
         </div>
         <ul class="lang-dropdown" id="langDropdown">
-            <li><a href="#">EN</a></li>
-            <li><a href="#">ES</a></li>
-        </ul>
+            </ul>
     </div>
 
     <header>
         <a href="index.html" class="logo">Matt.</a>
         
         <nav class="desktop-nav">
-            <a href="web-design.html">Serviços</a>
-            <a href="index.html#processo">Processo</a> 
-            <a href="sobre.html" class="active-page">Sobre</a>
+            <a href="web-design.html" data-i18n="nav-servicos">Serviços</a>
+            <a href="index.html#processo" data-i18n="nav-processo">Processo</a> 
+            <a href="sobre.html" class="active-page" data-i18n="nav-sobre">Sobre</a>
         </nav>
 
         <div class="header-right">
-            <a href="#contato" class="btn-talk">Contato</a>
+            <a href="#contato" class="btn-talk" data-i18n="nav-contato">Contato</a>
             <div class="mobile-menu-btn" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -46,11 +44,21 @@
 
     <div class="mobile-dropdown" id="mobileMenu">
         <nav class="mobile-nav-links">
-            <a href="web-design.html" onclick="toggleMenu()">Serviços</a>
-            <a href="sobre.html" onclick="toggleMenu()">Sobre</a>
-            <a href="index.html#processo" onclick="toggleMenu()">Processo</a>
+            <a href="web-design.html" onclick="toggleMenu()" data-i18n="nav-servicos">Serviços</a>
+            <a href="sobre.html" onclick="toggleMenu()" data-i18n="nav-sobre">Sobre</a>
+            <a href="index.html#processo" onclick="toggleMenu()" data-i18n="nav-processo">Processo</a>
+            
+            <div class="lang-mobile-container">
+                <div class="lang-mobile-btn" onclick="toggleMobileLang()">
+                    <i class="fas fa-globe" id="mobileLangIcon"></i> 
+                    <span id="currentLangMobile" data-i18n="nav-idioma">Idioma (PT)</span>
+                    <i class="fas fa-chevron-down arrow-indicator"></i>
+                </div>
+                <div class="lang-mobile-list" id="mobileLangList">
+                     </div>
+            </div>
         </nav>
-        <a href="#contato" class="btn-talk-mobile" onclick="toggleMenu()">Contato</a>
+        <a href="#contato" class="btn-talk-mobile" onclick="toggleMenu()" data-i18n="nav-contato">Contato</a>
     </div>
 
     <main id="swup" class="transition-fade">
@@ -65,13 +73,13 @@
                 
                 <div class="about-hero-right">
                     <h1 class="reveal">Matheus <br> Peixoto</h1>
-                    <p class="reveal delay-200">Entregando serviços premium de Web Design e Desenvolvimento para impulsionar a sua presença digital.</p>
+                    <p class="reveal delay-200" data-i18n="hero-slogan">Sites e soluções digitais que unem design e performance para fortalecer sua presença online</p>
                     
                     <a href="#about-content" class="hero-scroll-btn reveal delay-400">
                         <div class="arik-circle">
                             <i class="fas fa-arrow-down"></i>
                         </div>
-                        <span>Sobre Mim</span>
+                        <span data-i18n="nav-sobre">Sobre Mim</span>
                     </a>
                 </div>
 
@@ -79,15 +87,15 @@
                     <div class="gray-box reveal">
                         <span class="box-overline">MATHEUS PEIXOTO</span>
                         <h2 style="font-family: 'Canela', serif; font-size: 2.8rem; font-weight: 300; margin: 15px 0 30px;">
-                            Seu parceiro para dar vida à sua <span style="color: #efc9a2;">visão digital</span>
+                            <span data-i18n="sob-tit1">Da ideia à execução com</span> <span style="color: #efc9a2;" data-i18n="sob-tit2">atenção aos detalhes</span>
                         </h2>
                         
                         <div class="service-detail-content">
-                            <p style="color: var(--muted-color); font-size: 1.1rem; line-height: 1.8;">
-                                Como web designer e desenvolvedor, trago uma combinação única de criatividade e olhar técnico para cada projeto. A disciplina é a base de tudo o que faço. Da constância dos treinos na academia de segunda a sábado ao foco exigido na construção de um site do zero, acredito que grandes resultados nascem da repetição e do cuidado diário com os detalhes.
+                            <p style="color: var(--muted-color); font-size: 1.1rem; line-height: 1.8;" data-i18n="sob-p1">
+                                Como web designer e desenvolvedor, eu uno o lado criativo com a precisão técnica. Acredito que a base de um site excelente é a disciplina e a atenção aos mínimos detalhes. Construir um projeto do zero não depende só de inspiração, mas de testar, refinar e ter um total cuidado com cada linha de código e cada pixel da tela.
                             </p>
-                            <p style="color: var(--muted-color); font-size: 1.1rem; line-height: 1.8;">
-                                Minha abordagem é enraizada na colaboração e na comunicação clara. Seja discutindo estratégias para o mercado digital, explorando inovações no ecossistema de criptomoedas, ou buscando inspiração visual na natureza e na cultura pop, minha mente está sempre trabalhando para criar soluções que vão além do óbvio.
+                            <p style="color: var(--muted-color); font-size: 1.1rem; line-height: 1.8;" data-i18n="sob-p2">
+                                Acredito que os melhores projetos nascem de uma boa comunicação. Por isso, trabalho lado a lado com você, para entender a fundo os seus objetivos e entregar uma solução que fuja do óbvio e realmente traga resultados.
                             </p>
                         </div>
 
@@ -114,16 +122,16 @@
 
             </div> </div> <div class="marquee-section">
             <div class="marquee-track">
-                <span>VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
-                <span>VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
+                <span data-i18n="marquee-txt">VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
+                <span data-i18n="marquee-txt">VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
             </div>
         </div>
 
         <section id="contato" class="contact">
-            <span class="contact-subtitle reveal">Algum projeto em mente?</span>
+            <span class="contact-subtitle reveal" data-i18n="ft-sub">Algum projeto em mente?</span>
             <h2>
-                <span class="reveal delay-200" style="display: block;">Vamos tirar sua ideia</span>
-                <span class="reveal delay-400" style="display: block;">Do papel</span>
+                <span class="reveal delay-200" style="display: block;" data-i18n="ft-tit1">Vamos tirar sua ideia</span>
+                <span class="reveal delay-400" style="display: block;" data-i18n="ft-tit2">Do papel</span>
             </h2>
             
             <div class="footer-content reveal delay-400">
@@ -136,15 +144,15 @@
                     </div>
                 </div>
                 <div class="footer-col-right">
-                    <span class="footer-title">Páginas</span>
+                    <span class="footer-title" data-i18n="ft-nav-tit">Páginas</span>
                     <nav class="footer-nav">
                         <a href="index.html">Home</a>
-                        <a href="web-design.html">Serviços</a>
-                        <a href="sobre.html" class="active-page">Sobre</a>
+                        <a href="web-design.html" data-i18n="nav-servicos">Serviços</a>
+                        <a href="sobre.html" class="active-page" data-i18n="nav-sobre">Sobre</a>
                     </nav>
                 </div>
             </div>
-            <p class="footer-note">© 2026 Matheus Peixoto. Todos os direitos reservados.</p>
+            <p class="footer-note" data-i18n="ft-copy">© 2026 Matheus Peixoto. Todos os direitos reservados.</p>
         </section>
     </main>
 

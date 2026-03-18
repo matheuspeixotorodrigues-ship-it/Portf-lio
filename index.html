@@ -17,25 +17,23 @@
     <div class="lang-container">
         <div class="lang-current" onclick="toggleLangMenu()">
             <i class="fas fa-globe" id="langIcon"></i> 
-            <span>PT</span>
+            <span id="currentLangDesktop">PT</span>
         </div>
         <ul class="lang-dropdown" id="langDropdown">
-            <li><a href="#">EN</a></li>
-            <li><a href="#">ES</a></li>
-        </ul>
+            </ul>
     </div>
 
     <header>
         <a href="index.html" class="logo">Matt<span class="logo-dot">.</span></a>
         
         <nav class="desktop-nav">
-            <a href="web-design.html">Serviços</a>
-            <a href="index.html#processo">Processo</a> 
-            <a href="sobre.html">Sobre</a>
+            <a href="web-design.html" data-i18n="nav-servicos">Serviços</a>
+            <a href="index.html#processo" data-i18n="nav-processo">Processo</a> 
+            <a href="sobre.html" data-i18n="nav-sobre">Sobre</a>
         </nav>
 
         <div class="header-right">
-            <a href="#contato" class="btn-talk">Contato</a>
+            <a href="#contato" class="btn-talk" data-i18n="nav-contato">Contato</a>
             <div class="mobile-menu-btn" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -46,23 +44,21 @@
 
     <div class="mobile-dropdown" id="mobileMenu">
         <nav class="mobile-nav-links">
-            <a href="web-design.html" onclick="toggleMenu()">Serviços</a>
-            <a href="sobre.html" onclick="toggleMenu()">Sobre</a>
-            <a href="index.html#processo" onclick="toggleMenu()">Processo</a>
+            <a href="web-design.html" onclick="toggleMenu()" data-i18n="nav-servicos">Serviços</a>
+            <a href="sobre.html" onclick="toggleMenu()" data-i18n="nav-sobre">Sobre</a>
+            <a href="index.html#processo" onclick="toggleMenu()" data-i18n="nav-processo">Processo</a>
             
             <div class="lang-mobile-container">
                 <div class="lang-mobile-btn" onclick="toggleMobileLang()">
                     <i class="fas fa-globe" id="mobileLangIcon"></i> 
-                    <span>Idioma (PT)</span>
+                  <span id="currentLangMobile" data-i18n="nav-idioma">Idioma (PT)</span>
                     <i class="fas fa-chevron-down arrow-indicator"></i>
                 </div>
                 <div class="lang-mobile-list" id="mobileLangList">
-                    <a href="#">English (EN)</a>
-                    <a href="#">Español (ES)</a>
-                </div>
+                    </div>
             </div>
         </nav>
-        <a href="#contato" class="btn-talk-mobile" onclick="toggleMenu()">Contato</a>
+        <a href="#contato" class="btn-talk-mobile" onclick="toggleMenu()" data-i18n="nav-contato">Contato</a>
     </div>
 
     <main id="swup" class="transition-fade">
@@ -73,13 +69,13 @@
 
             <div class="hero-content parallax-text">
                 <h1>Web Designer <br> <span class="lighter">& Developer</span></h1>
-                <p>Design e desenvolvimento pensados para o crescimento do seu negócio</p>
+                <p data-i18n="hero-desc">Design e desenvolvimento pensados para o crescimento do seu negócio</p>
                 
                 <a href="#services" class="hero-scroll-btn">
                     <div class="arik-circle">
                         <i class="fas fa-arrow-down"></i>
                     </div>
-                    <span>Ver Serviços</span>
+                    <span data-i18n="hero-btn">Ver Serviços</span>
                 </a>
             </div>
         </section>
@@ -90,11 +86,11 @@
                     <div>
                         <span class="service-number">01</span>
                         <h3>WEB DESIGN</h3>
-                        <p>Design moderno, atraente e funcional. Layouts que chamam a atenção e conectam a essência da sua marca com o que o seu cliente realmente procura.</p>
+                        <p data-i18n="srv1-desc">Design moderno, atraente e funcional. Layouts que chamam a atenção e conectam a essência da sua marca com o que o seu cliente realmente procura.</p>
                     </div>
                     <a href="web-design.html#area-web-design" class="service-link">
                         <div class="arrow-circle"><i class="fas fa-arrow-up-right-from-square"></i></div>
-                        <span>Sobre Web Design</span>
+                        <span data-i18n="srv1-link">Sobre Web Design</span>
                     </a>
                 </div>
 
@@ -102,11 +98,11 @@
                     <div>
                         <span class="service-number">02</span>
                         <h3>WEB DEVELOPMENT</h3>
-                        <p>Desenvolvimento web feito sob medida para o seu projeto. Código limpo, alta performance e uma experiência de usuário impecável para quem acessar a sua página.</p>
+                        <p data-i18n="srv2-desc">Desenvolvimento web feito sob medida para o seu projeto. Código limpo, alta performance e uma experiência de usuário impecável para quem acessar a sua página.</p>
                     </div>
                     <a href="web-design.html#area-web-development" class="service-link">
                         <div class="arrow-circle"><i class="fas fa-arrow-up-right-from-square"></i></div>
-                        <span>Sobre Web development</span>
+                        <span data-i18n="srv2-link">Sobre Web development</span>
                     </a>
                 </div>
             </div>
@@ -114,12 +110,12 @@
 
         <section id="processo" class="process-section">
             <div class="process-header" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                <span class="contact-subtitle reveal fade-down">PROCESSO</span>
+                <span class="contact-subtitle reveal fade-down" data-i18n="proc-sub">PROCESSO</span>
                 <h2 class="reveal">
-                    <span style="display: block;">Seu site em</span>
-                    <span style="color: #efc9a2; display: block;">5 etapas</span>
+                    <span style="display: block;" data-i18n="proc-tit1">Seu site em</span>
+                    <span style="color: #efc9a2; display: block;" data-i18n="proc-tit2">5 etapas</span>
                 </h2>
-                <p class="reveal" style="text-align: center; color: #fbede0; margin-bottom: 120px; max-width: 500px;">
+                <p class="reveal" style="text-align: center; color: #fbede0; margin-bottom: 120px; max-width: 500px;" data-i18n="proc-desc">
                     Feito sob medida para você
                 </p>
             </div>
@@ -129,45 +125,45 @@
                 <div class="timeline-item reveal">
                     <div class="timeline-number">01</div>
                     <div class="timeline-box">
-                        <span class="box-overline">VAMOS CONVERSAR?</span>
-                        <h3>Descoberta e Objetivos</h3>
-                        <p>Entendo sua ideia, seu público e os objetivos do projeto para definir a melhor direção</p>
+                        <span class="box-overline" data-i18n="p1-sub">VAMOS CONVERSAR?</span>
+                        <h3 data-i18n="p1-tit">Descoberta e Objetivos</h3>
+                        <p data-i18n="p1-desc">Entendo sua ideia, seu público e os objetivos do projeto para definir a melhor direção</p>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal delay-200">
                     <div class="timeline-number">02</div>
                     <div class="timeline-box">
-                        <span class="box-overline">A BASE</span>
-                        <h3>Estrutura e Estratégia</h3>
-                        <p>Defino a estrutura do site e organizo as informações para uma navegação clara, intuitiva e eficiente</p>
+                        <span class="box-overline" data-i18n="p2-sub">A BASE</span>
+                        <h3 data-i18n="p2-tit">Estrutura e Estratégia</h3>
+                        <p data-i18n="p2-desc">Defino a estrutura do site e organizo as informações para uma navegação clara, intuitiva e eficiente</p>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal delay-200">
                     <div class="timeline-number">03</div>
                     <div class="timeline-box">
-                        <span class="box-overline">DIREÇÃO VISUAL</span>
-                        <h3>Design Estratégico</h3>
-                        <p>Crio um visual alinhado com a identidade da sua marca, focado em clareza, estética e experiência do usuário</p>
+                        <span class="box-overline" data-i18n="p3-sub">DIREÇÃO VISUAL</span>
+                        <h3 data-i18n="p3-tit">Design Estratégico</h3>
+                        <p data-i18n="p3-desc">Crio um visual alinhado com a identidade da sua marca, focado em clareza, estética e experiência do usuário</p>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal delay-200">
                     <div class="timeline-number">04</div>
                     <div class="timeline-box">
-                        <span class="box-overline">EXECUÇÃO</span>
-                        <h3>Desenvolvimento</h3>
-                        <p>Transformo o design em um site rápido, otimizado e responsivo, com código limpo e foco em performance</p>
+                        <span class="box-overline" data-i18n="p4-sub">EXECUÇÃO</span>
+                        <h3 data-i18n="p4-tit">Desenvolvimento</h3>
+                        <p data-i18n="p4-desc">Transformo o design em um site rápido, otimizado e responsivo, com código limpo e foco em performance</p>
                     </div>
                 </div>
 
                 <div class="timeline-item reveal delay-200">
                     <div class="timeline-number">05</div>
                     <div class="timeline-box">
-                        <span class="box-overline">ENTREGA</span>
-                        <h3>Lançamento e Suporte</h3>
-                        <p>Publico o site e realizo a entrega completa, com suporte para garantir sua segurança e autonomia</p>
+                        <span class="box-overline" data-i18n="p5-sub">ENTREGA</span>
+                        <h3 data-i18n="p5-tit">Lançamento e Suporte</h3>
+                        <p data-i18n="p5-desc">Publico o site e realizo a entrega completa, com suporte para garantir sua segurança e autonomia</p>
                     </div>
                 </div>
             </div>
@@ -187,10 +183,10 @@
                 
                 <div class="about-grid reveal delay-200">
                     <div class="about-left">
-                        <h2>Design que impressiona <span style="color: #efc9a2;">Performance impecável</span></h2>
+                        <h2><span data-i18n="ab-tit1">Design que impressiona</span> <span style="color: #efc9a2;" data-i18n="ab-tit2">Performance impecável</span></h2>
                     </div>
                     <div class="about-right">
-                        <p>Olá, sou o Matheus, web designer e desenvolvedor. Crio sites modernos, rápidos e pensados para transformar visitantes em clientes. Se você busca resultado de verdade, vamos conversar.</p>
+                        <p data-i18n="ab-desc">Olá, sou o Matheus, web designer e desenvolvedor. Crio sites modernos, rápidos e pensados para transformar visitantes em clientes. Se você busca resultado de verdade, vamos conversar.</p>
                         <div class="about-socials">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -203,16 +199,16 @@
 
         <div class="marquee-section">
             <div class="marquee-track">
-                <span>VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
-                <span>VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
+                <span data-i18n="marquee-txt">VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
+                <span data-i18n="marquee-txt">VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
             </div>
         </div>
 
         <section id="contato" class="contact">
-            <span class="contact-subtitle reveal">Algum projeto em mente?</span>
+            <span class="contact-subtitle reveal" data-i18n="ft-sub">Algum projeto em mente?</span>
             <h2>
-                <span class="reveal delay-200" style="display: block;">Vamos tirar sua ideia</span>
-                <span class="reveal delay-400" style="display: block;">Do papel</span>
+                <span class="reveal delay-200" style="display: block;" data-i18n="ft-tit1">Vamos tirar sua ideia</span>
+                <span class="reveal delay-400" style="display: block;" data-i18n="ft-tit2">Do papel</span>
             </h2>
             
             <div class="footer-content reveal delay-400">
@@ -237,17 +233,17 @@
                 </div>
 
                 <div class="footer-col-right">
-                    <span class="footer-title">Páginas</span>
+                    <span class="footer-title" data-i18n="ft-nav-tit">Páginas</span>
                     <nav class="footer-nav">
                         <a href="index.html" class="active-page">Home</a>
-                        <a href="web-design.html">Serviços</a>
-                        <a href="sobre.html">Sobre</a>
+                        <a href="web-design.html" data-i18n="nav-servicos">Serviços</a>
+                        <a href="sobre.html" data-i18n="nav-sobre">Sobre</a>
                     </nav>
                 </div>
 
             </div>
             
-            <p class="footer-note">© 2026 Matheus Peixoto. Todos os direitos reservados.</p>
+            <p class="footer-note" data-i18n="ft-copy">© 2026 Matheus Peixoto. Todos os direitos reservados.</p>
         </section>
     </main>
 
@@ -255,4 +251,4 @@
     <script src="https://unpkg.com/@swup/scroll-plugin@3"></script>
     <script src="script.js"></script>
 </body>
-</html
+</html>

@@ -17,27 +17,23 @@
     <div class="lang-container">
         <div class="lang-current" onclick="toggleLangMenu()">
             <i class="fas fa-globe" id="langIcon"></i> 
-            <span>PT</span>
+            <span id="currentLangDesktop">PT</span>
         </div>
         <ul class="lang-dropdown" id="langDropdown">
-            <li><a href="#">EN</a></li>
-            <li><a href="#">ES</a></li>
-        </ul>
+            </ul>
     </div>
 
     <header>
-       <header>
-    <a href="index.html" class="logo">Matt<span class="logo-dot">.</span></a>
-...
+        <a href="index.html" class="logo">Matt<span class="logo-dot">.</span></a>
         
         <nav class="desktop-nav">
-            <a href="web-design.html">Serviços</a>
-            <a href="index.html#processo">Processo</a>
-            <a href="sobre.html">Sobre</a>
+            <a href="web-design.html" data-i18n="nav-servicos">Serviços</a>
+            <a href="index.html#processo" data-i18n="nav-processo">Processo</a>
+            <a href="sobre.html" data-i18n="nav-sobre">Sobre</a>
         </nav>
 
         <div class="header-right">
-            <a href="#contato" class="btn-talk">Contato</a>
+            <a href="#contato" class="btn-talk" data-i18n="nav-contato">Contato</a>
             <div class="mobile-menu-btn" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -48,41 +44,39 @@
 
     <div class="mobile-dropdown" id="mobileMenu">
         <nav class="mobile-nav-links">
-            <a href="web-design.html" onclick="toggleMenu()">Serviços</a>
-            <a href="sobre.html" onclick="toggleMenu()">Sobre</a>
-            <a href="index.html#processo" onclick="toggleMenu()">Processo</a>
+            <a href="web-design.html" onclick="toggleMenu()" data-i18n="nav-servicos">Serviços</a>
+            <a href="sobre.html" onclick="toggleMenu()" data-i18n="nav-sobre">Sobre</a>
+            <a href="index.html#processo" onclick="toggleMenu()" data-i18n="nav-processo">Processo</a>
             
             <div class="lang-mobile-container">
                 <div class="lang-mobile-btn" onclick="toggleMobileLang()">
                     <i class="fas fa-globe" id="mobileLangIcon"></i> 
-                    <span>Idioma (PT)</span>
+                    <span id="currentLangMobile" data-i18n="nav-idioma">Idioma (PT)</span>
                     <i class="fas fa-chevron-down arrow-indicator"></i>
                 </div>
                 <div class="lang-mobile-list" id="mobileLangList">
-                    <a href="#">English (EN)</a>
-                    <a href="#">Español (ES)</a>
-                </div>
+                    </div>
             </div>
         </nav>
-        <a href="#contato" class="btn-talk-mobile" onclick="toggleMenu()">Contato</a>
+        <a href="#contato" class="btn-talk-mobile" onclick="toggleMenu()" data-i18n="nav-contato">Contato</a>
     </div>
 
     <main id="swup" class="transition-fade">
         
-      <section class="service-detail-hero reveal">
-            <h1>Web Design <br> <span class="lighter">& Framer</span></h1>
+        <section class="service-detail-hero reveal">
+            <h1>Web Design <br> <span class="lighter">& Development</span></h1>
             
             <div class="hero-laptop-image delay-200">
                 <img src="img/computador.png.png" alt="Notebook Mockup">
             </div>
 
-            <p class="delay-300">Serviços premium de web design e web development para destacar o seu negócio.</p>
+            <p class="delay-300" data-i18n="srv-hero-desc">Soluções digitais exclusivas para quem busca impacto visual e escala no mercado</p>
             
             <a href="#area-web-design" class="hero-scroll-btn delay-400">
                 <div class="arik-circle">
                     <i class="fas fa-arrow-down"></i>
                 </div>
-                <span>Meus Serviços</span>
+                <span data-i18n="hero-btn">Ver Serviços</span>
             </a>
         </section>
 
@@ -91,7 +85,7 @@
                 
                 <div class="service-detail-header">
                     <span class="box-overline">WEB DESIGN</span>
-                    <h2>Transformando suas <span style="color: #efc9a2;">Ideias em Realidade</span></h2>
+                    <h2><span data-i18n="srv-wd-tit1">Design estratégico para destacar a</span> <span style="color: #efc9a2;" data-i18n="srv-wd-tit2">autoridade da sua marca</span></h2>
                 </div>
 
                 <div class="detail-internal-image reveal">
@@ -99,18 +93,18 @@
                 </div>
                 <div class="service-detail-content">
                     <div class="detail-block">
-                        <span class="box-overline">CONCEITO</span>
-                        <p>Tiro um tempo para entender as necessidades do seu negócio e o seu público para desenvolver um conceito único para o seu site. Crio wireframes que servem de fundação para o design e funcionalidade do projeto.</p>
+                        <span class="box-overline" data-i18n="srv-wd-b1-tit">CONCEITO</span>
+                        <p data-i18n="srv-wd-b1-desc">Analiso o perfil do seu negócio e público para criar um conceito sob medida. Estruturo a base do site para que design e funcionalidades funcionem perfeitamente.</p>
                     </div>
 
                     <div class="detail-block">
                         <span class="box-overline">DESIGN DE UX / UI</span>
-                        <p>Desenho uma interface amigável e visualmente atraente que engaja seu público-alvo. Seu site será criado para atingir os objetivos da sua marca garantindo uma experiência de navegação impecável.</p>
+                        <p data-i18n="srv-wd-b2-desc">Crio interfaces intuitivas e visualmente marcantes, pensadas para engajar seu público e alcançar os objetivos da sua marca.</p>
                     </div>
 
                     <div class="detail-block">
-                        <span class="box-overline">PROTOTIPAGEM</span>
-                        <p>Com um protótipo interativo, você terá a habilidade de testar as funcionalidades do site antes dele ir ao ar. Isso garante que a experiência esteja 100% otimizada para as preferências do seu cliente.</p>
+                        <span class="box-overline" data-i18n="srv-wd-b3-tit">PROTOTIPAGEM</span>
+                        <p data-i18n="srv-wd-b3-desc">Desenvolvo protótipos interativos para testar o site antes do lançamento, garantindo uma experiência otimizada para o seu cliente.</p>
                     </div>
                 </div>
 
@@ -122,7 +116,7 @@
                 
                 <div class="service-detail-header">
                     <span class="box-overline">DEVELOPMENT</span>
-                    <h2>Desenvolvendo Sites de <span style="color: #efc9a2;">Alta Performance</span></h2>
+                    <h2><span data-i18n="srv-dev-tit1">Desenvolvendo sites de</span> <span style="color: #efc9a2;" data-i18n="srv-dev-tit2">alta performance</span></h2>
                 </div>
 
                 <div class="detail-internal-image reveal">
@@ -130,35 +124,36 @@
                 </div>
                 <div class="service-detail-content">
                     <div class="detail-block">
-                        <span class="box-overline">FRAMER</span>
-                        <p>Sou especialista no desenvolvimento de aplicações web utilizando o Framer. Desde animações personalizadas até interações complexas, dou vida ao seu projeto de forma fluida e responsiva.</p>
+                        <span class="box-overline" data-i18n="srv-dev-b1-tit">CÓDIGO</span>
+                        <p data-i18n="srv-dev-b1-desc">Transformo o design em um site funcional, rápido e seguro, com total fluidez em qualquer dispositivo.</p>
                     </div>
 
                     <div class="detail-block">
-                        <span class="box-overline">INTEGRAÇÃO DE CMS</span>
-                        <p>Ajudo a otimizar o seu processo de gerenciamento de conteúdo integrando um CMS ao seu site. Diga adeus às atualizações manuais e olá à eficiência e praticidade.</p>
+                        <span class="box-overline" data-i18n="srv-dev-b2-tit">INTEGRAÇÃO DE CMS</span>
+                        <p data-i18n="srv-dev-b2-desc">Instalo um sistema fácil de usar, permitindo que você atualize textos e imagens do seu site sem depender de ninguém.</p>
                     </div>
 
                     <div class="detail-block">
-                        <span class="box-overline">WEB DESIGN SYSTEM</span>
-                        <p>Utilizo uma abordagem de design modular para criar um sistema que garante a consistência em todas as páginas. O resultado é uma presença online altamente profissional, coesa e escalável.</p>
+                        <span class="box-overline" data-i18n="srv-dev-b3-tit">ESTRUTURA</span>
+                        <p data-i18n="srv-dev-b3-desc">Crio uma estrutura consistente para que todas as páginas sigam o mesmo padrão visual, deixando o site profissional e fácil de expandir.</p>
                     </div>
                 </div>
 
             </div> 
         </section>
-          <div class="marquee-section">
+        
+        <div class="marquee-section">
             <div class="marquee-track">
-                <span>VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
-                <span>VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
+                <span data-i18n="marquee-txt">VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
+                <span data-i18n="marquee-txt">VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp; VAMOS CONVERSAR &nbsp;&nbsp;+++&nbsp;&nbsp;</span>
             </div>
         </div>
         
         <section id="contato" class="contact">
-            <span class="contact-subtitle reveal">Algum projeto em mente?</span>
+            <span class="contact-subtitle reveal" data-i18n="ft-sub">Algum projeto em mente?</span>
             <h2>
-                <span class="reveal delay-200" style="display: block;">Vamos tirar sua ideia</span>
-                <span class="reveal delay-400" style="display: block;">Do papel</span>
+                <span class="reveal delay-200" style="display: block;" data-i18n="ft-tit1">Vamos tirar sua ideia</span>
+                <span class="reveal delay-400" style="display: block;" data-i18n="ft-tit2">Do papel</span>
             </h2>
             
             <div class="footer-content reveal delay-400">
@@ -183,17 +178,17 @@
                 </div>
 
                 <div class="footer-col-right">
-                    <span class="footer-title">Páginas</span>
+                    <span class="footer-title" data-i18n="ft-nav-tit">Páginas</span>
                     <nav class="footer-nav">
                         <a href="index.html">Home</a>
-                        <a href="web-design.html" class="active-page">Serviços</a>
-                        <a href="sobre.html">Sobre</a>
+                        <a href="web-design.html" class="active-page" data-i18n="nav-servicos">Serviços</a>
+                        <a href="sobre.html" data-i18n="nav-sobre">Sobre</a>
                     </nav>
                 </div>
 
             </div>
             
-            <p class="footer-note">© 2026 Matheus. Todos os direitos reservados.</p>
+            <p class="footer-note" data-i18n="ft-copy">© 2026 Matheus. Todos os direitos reservados.</p>
         </section>
         
     </main>
