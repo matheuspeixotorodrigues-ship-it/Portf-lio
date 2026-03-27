@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+}
+
+/* --- ANIMAÇÕES FLUIDAS --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.error-header, .title-404, .subtitle, .description, .back-btn {
+    opacity: 0; 
+    animation-name: fadeInUp;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both; 
+}
+
+.error-header { animation-delay: 0.2s; }
+.title-404 { animation-delay: 0.4s; }
+.subtitle { animation-delay: 0.6s; }
+.description { animation-delay: 0.8s; }
+.back-btn { animation-delay: 1.0s; }
+
+/* --- Cabeçalho e Logo --- */
+.error-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 50px;
+    z-index: 100; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif; 
+    font-size: 2rem; 
+    font-weight: 100; 
+    color: #fff; 
+    text-decoration: none; 
+    letter-spacing: 2px; 
+    text-transform: lowercase; 
+    line-height: 1;
+}
+
+.logo-dot {
+    color: #efc9a2; 
+    font-weight: 400; 
+}
+
+/* --- Container do Conteúdo --- */
+.main-container {
+    position: relative;
+    z-index: 10; 
+    display: flex;
+    justify-content: center; /* ERRO CORRIGIDO AQUI */
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    pointer-events: none; 
+}
+
+.content-404 {
+    max-width: 600px;
+    pointer-events: auto; 
+}
+
+/* --- Título 404 e Lua --- */
+.title-404 {
+    font-size: 15vw;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -5px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* ERRO CORRIGIDO AQUI */
+    align-items: center;
+    color: #fff; 
+}
+
+#moon-box {
+    display: inline-block;
+    vertical-align: middle; 
+    width: 12vw; 
+    height: 12vw;
+    margin: 0 10px;
+    position: relative;
+    background: transparent; 
+    overflow: visible; 
+}
+
+/* --- Textos e Botão --- */
+.subtitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.description {
+    font-size: 1.1rem;
+    opacity: 0.7;
+    margin-bottom: 40px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 35px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.back-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.arrow-icon {
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+/* --- AJUSTES MOBILE CORRIGIDOS --- */
+@media (max-width: 768px) {
+    .error-header { padding: 25px 20px; }
+    .logo { font-size: 2rem; }
+    .title-404 { font-size: 28vw; } 
+    
+    #moon-box { width: 25vw; height: 25vw; } 
+    
+    .subtitle { font-size: 1.4rem; }
+    .description { font-size: 1rem; padding: 0 15px; }
+    .back-btn { padding: 12px 25px; font-size: 0.9rem; }
+}
